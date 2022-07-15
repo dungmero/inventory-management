@@ -5,7 +5,7 @@
 	<div class="">
 
 		<div class="clearfix"></div>
-		<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="col-md-12 col-sm-12 ">
 			<div class="x_panel">
 				<div class="x_title">
 					<h2>Category List</h2>
@@ -18,29 +18,29 @@
 					<a href="<c:url value="/category/add"/>" class="btn btn-app"><i class="fa fa-plus"></i>Add</a>
 					<div class="container" style="padding: 50px;">
 						<form:form modelAttribute="searchForm" cssClass="form-horizontal form-label-left" servletRelativeAction="/category/list" method="POST">
-							<div class="form-group">
-								<label for="description" class="control-label col-md-3 col-sm-3 col-xs-12">ID</label>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<form:input path="id" cssClass="form-control col-md-7 col-xs-12"  />
+							<div class="item form-group">
+								<label for="id" class="col-form-label col-md-3 col-sm-3 label-align">ID</label>
+								<div class="col-md-6 col-sm-6 ">
+									<form:input path="id" cssClass="form-control"  />
 								</div>
 							</div>
-							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="code">Code 
+							<div class="item form-group">
+								<label class="col-form-label col-md-3 col-sm-3 label-align" for="code">Code 
 								</label>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<form:input path="code" cssClass="form-control col-md-7 col-xs-12"  />
+								<div class="col-md-6 col-sm-6 ">
+									<form:input path="code" cssClass="form-control"  />
 								</div>
 							</div>
-							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name 
+							<div class="item form-group">
+								<label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name 
 								</label>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<form:input path="name" cssClass="form-control col-md-7 col-xs-12"  />
+								<div class="col-md-6 col-sm-6 ">
+									<form:input path="name" cssClass="form-control"  />
 								</div>
 							</div>
 							
-							<div class="form-group">
-								<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+							<div class="item form-group">
+								<div class="col-md-6 col-sm-6 offset-md-3">
 										<button type="submit" class="btn btn-success">Search</button>
 								</div>
 							</div>
@@ -77,7 +77,7 @@
 									<td class=" ">${category.code }</td>
 									<td class=" ">${category.name }</td>
 									<td class=" ">${category.description }</td>
-									<td class="text-center"><a href="<c:url value="/category/view/${category.id }"/>" class="btn btn-round btn-default">View</a></td>
+									<td class="text-center"><a href="<c:url value="/category/view/${category.id }"/>" class="btn btn-round btn-secondary">View</a></td>
 									<td class="text-center"><a href="<c:url value="/category/edit/${category.id }"/>" class="btn btn-round btn-primary">Edit</a></td>
 									<td class="text-center"><a href="javascript:void(0);" onclick="confirmDelete(${category.id});" class="btn btn-round btn-danger">Delete</a></td>
 									</tr>
