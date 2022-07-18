@@ -118,13 +118,13 @@ function init_sidebar() {
     });
 
     // check active menu
-    $SIDEBAR_MENU.find('a[href="' + CURRENT_URL + '"]').parent('li').addClass('current-page');
+    //$SIDEBAR_MENU.find('a[href="' + CURRENT_URL + '"]').parent('li').addClass('current-page');
 
     $SIDEBAR_MENU.find('a').filter(function () {
-        return this.href == CURRENT_URL;
-    }).parent('li').addClass('current-page').parents('ul').slideDown(function () {
+        return CURRENT_URL.indexOf(this.href)>-1;
+    }).parent('li').addClass('current-page').siblings().removeClass('current-page').parents('ul').slideDown(function () {
         setContentHeight();
-    }).parent().addClass('active');
+    }).parent().addClass('active').siblings().removeClass('active');
 
     // recompute content when resizing
     $(window).smartresize(function () {

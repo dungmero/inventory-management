@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <div class="right_col" role="main">
@@ -15,33 +16,37 @@
 
 
 				<div class="x_content">
-					<a href="<c:url value="/category/add"/>" class="btn btn-app"><i class="fa fa-plus"></i>Add</a>
+					<a href="<c:url value="/category/add"/>" class="btn btn-app"><i
+						class="fa fa-plus"></i>Add</a>
 					<div class="container" style="padding: 50px;">
-						<form:form modelAttribute="searchForm" cssClass="form-horizontal form-label-left" servletRelativeAction="/category/list" method="POST">
+						<form:form modelAttribute="searchForm"
+							cssClass="form-horizontal form-label-left"
+							servletRelativeAction="/category/list" method="POST">
 							<div class="item form-group">
-								<label for="id" class="col-form-label col-md-3 col-sm-3 label-align">ID</label>
+								<label for="id"
+									class="col-form-label col-md-3 col-sm-3 label-align">ID</label>
 								<div class="col-md-6 col-sm-6 ">
-									<form:input path="id" cssClass="form-control"  />
+									<form:input path="id" cssClass="form-control" />
 								</div>
 							</div>
 							<div class="item form-group">
-								<label class="col-form-label col-md-3 col-sm-3 label-align" for="code">Code 
-								</label>
+								<label class="col-form-label col-md-3 col-sm-3 label-align"
+									for="code">Code </label>
 								<div class="col-md-6 col-sm-6 ">
-									<form:input path="code" cssClass="form-control"  />
+									<form:input path="code" cssClass="form-control" />
 								</div>
 							</div>
 							<div class="item form-group">
-								<label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name 
-								</label>
+								<label class="col-form-label col-md-3 col-sm-3 label-align"
+									for="name">Name </label>
 								<div class="col-md-6 col-sm-6 ">
-									<form:input path="name" cssClass="form-control"  />
+									<form:input path="name" cssClass="form-control" />
 								</div>
 							</div>
-							
+
 							<div class="item form-group">
 								<div class="col-md-6 col-sm-6 offset-md-3">
-										<button type="submit" class="btn btn-success">Search</button>
+									<button type="submit" class="btn btn-success">Search</button>
 								</div>
 							</div>
 
@@ -57,34 +62,42 @@
 									<th class="column-title">Code</th>
 									<th class="column-title">Name</th>
 									<th class="column-title">Description</th>
-									<th class="column-title no-link last text-center" colspan="3"><span class="nobr">Action</span></th>
+									<th class="column-title no-link last text-center" colspan="3"><span
+										class="nobr">Action</span></th>
 								</tr>
 							</thead>
 
 							<tbody>
 								<c:forEach items="${categories}" var="category" varStatus="loop">
-
-									<c:choose>
-										<c:when test="${loop.index%2==0 }">
-											<tr class="even pointer">
-										</c:when>
-										<c:otherwise>
-											<tr class="odd pointer">
-										</c:otherwise>
-									</c:choose>
-									<td class=" ">${loop.index+1}</td>
-									<td class=" ">${category.id }</td>
-									<td class=" ">${category.code }</td>
-									<td class=" ">${category.name }</td>
-									<td class=" ">${category.description }</td>
-									<td class="text-center"><a href="<c:url value="/category/view/${category.id }"/>" class="btn btn-round btn-secondary">View</a></td>
-									<td class="text-center"><a href="<c:url value="/category/edit/${category.id }"/>" class="btn btn-round btn-primary">Edit</a></td>
-									<td class="text-center"><a href="javascript:void(0);" onclick="confirmDelete(${category.id});" class="btn btn-round btn-danger">Delete</a></td>
+										<c:choose>
+											<c:when test="${loop.index%2==0 }">
+												<tr class="even pointer">
+											</c:when>
+											<c:otherwise>
+												<tr class="odd pointer">
+											</c:otherwise>
+										</c:choose>
+										<td class=" ">${pageInfo.getOffset()+loop.index+1}</td>
+										<td class=" ">${category.id }</td>
+										<td class=" ">${category.code }</td>
+										<td class=" ">${category.name }</td>
+										<td class=" ">${category.description }</td>
+										<td class="text-center"><a
+											href="<c:url value="/category/view/${category.id }"/>"
+											class="btn btn-round btn-secondary">View</a></td>
+										<td class="text-center"><a
+											href="<c:url value="/category/edit/${category.id }"/>"
+											class="btn btn-round btn-primary">Edit</a></td>
+										<td class="text-center"><a href="javascript:void(0);"
+											onclick="confirmDelete(${category.id});"
+											class="btn btn-round btn-danger">Delete</a></td>
 									</tr>
 								</c:forEach>
 
 							</tbody>
 						</table>
+
+						<jsp:include page="../layout/paging.jsp"></jsp:include>
 					</div>
 
 
@@ -99,6 +112,11 @@
 			 window.location.href = '<c:url value="/category/delete/"/>'+id;
 		 }
 	 }
+	 function gotoPage(page) {
+		$('#searchForm').attr('action','<c:url value="/category/list/"/>'+page);
+		$('#searchForm').submit();
+	 }
+	 
 	 $(document).ready(function(){
 		 processMessage();
 	 });
