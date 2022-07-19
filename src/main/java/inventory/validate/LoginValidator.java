@@ -12,14 +12,16 @@ import org.springframework.validation.Validator;
 import inventory.model.Users;
 import inventory.service.UserService;
 @Component
-public class LoginValidator implements Validator{
+public class LoginValidator implements Validator {
 	@Autowired
 	private UserService userService;
+	@Override
 	public boolean supports(Class<?> clazz) {
 		// TODO Auto-generated method stub
 		return clazz == Users.class;
 	}
 
+	@Override
 	public void validate(Object target, Errors errors) {
 		Users user = (Users) target;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName", "msg.required");
@@ -30,14 +32,12 @@ public class LoginValidator implements Validator{
 				if(!users.get(0).getPassword().equals(user.getPassword())) {
 					errors.rejectValue("password", "msg.wrong.password");
 				}
-			}else {
+			} else {
 				errors.rejectValue("userName", "msg.wrong.username");
 			}
 		}
 		
+		
 	}
-
-
-	
 
 }

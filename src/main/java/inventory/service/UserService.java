@@ -14,9 +14,8 @@ public class UserService {
 	final static Logger log = Logger.getLogger(UserService.class);
 	@Autowired
 	private UserDAO<Users> userDAO;
-	public List<Users> findByProperty(String property , Object value) {
+	public List<Users> findByProperty(String property, Object value) {
 		log.info("Find user by property start ");
 		return userDAO.findByProperty(property, value);
-		
 	}
 }

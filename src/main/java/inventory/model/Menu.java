@@ -1,9 +1,8 @@
 package inventory.model;
-// Generated Dec 26, 2018 6:59:18 PM by Hibernate Tools 5.1.10.Final
+// Generated Jul 18, 2022, 11:57:22 PM by Hibernate Tools 5.6.7.Final
 
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -20,8 +19,6 @@ public class Menu implements java.io.Serializable {
 	private Date createDate;
 	private Date updateDate;
 	private Set auths = new HashSet(0);
-	private List<Menu> child;
-	private String idMenu;
 
 	public Menu() {
 	}
@@ -120,22 +117,5 @@ public class Menu implements java.io.Serializable {
 	public void setAuths(Set auths) {
 		this.auths = auths;
 	}
-
-	public List<Menu> getChild() {
-		return child;
-	}
-
-	public void setChild(List<Menu> child) {
-		this.child = child;
-	}
-
-	public String getIdMenu() {
-		return idMenu;
-	}
-
-	public void setIdMenu(String idMenu) {
-		this.idMenu = idMenu;
-	}
-	
 
 }
