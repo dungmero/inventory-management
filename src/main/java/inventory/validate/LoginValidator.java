@@ -37,7 +37,6 @@ public class LoginValidator implements Validator {
 			}
 		}
 		
-		//test github branch
 		
 	}
 

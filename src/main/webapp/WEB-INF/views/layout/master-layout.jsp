@@ -44,7 +44,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Dung Nguyen</h2>
+                <h2>${userInfo.name}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
