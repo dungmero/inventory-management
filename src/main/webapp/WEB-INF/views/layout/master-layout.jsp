@@ -21,6 +21,10 @@
     <link href="<c:url value="/resources/vendors/nprogress/nprogress.css"/>" rel="stylesheet">
     <!-- jQuery custom content scroller -->
     <link href="<c:url value="/resources/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css"/>" rel="stylesheet"/>
+    <!-- PNotify -->
+    <link href="<c:url value="/resources/vendors/pnotify/dist/pnotify.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/vendors/pnotify/dist/pnotify.buttons.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/vendors/pnotify/dist/pnotify.nonblock.css"/>" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="<c:url value="/resources/build/css/custom.min.css"/>" rel="stylesheet">
@@ -99,6 +103,10 @@
     <script src="<c:url value="/resources/vendors/nprogress/nprogress.js"/>"></script>
     <!-- jQuery custom content scroller -->
     <script src="<c:url value="/resources/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"/>"></script>
+        <!-- PNotify -->
+    <script src="<c:url value="/resources/vendors/pnotify/dist/pnotify.js"/>"></script>
+    <script src="<c:url value="/resources/vendors/pnotify/dist/pnotify.buttons.js"/>"></script>
+    <script src="<c:url value="/resources/vendors/pnotify/dist/pnotify.nonblock.js"/>"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="<c:url value="/resources/build/js/custom.js"/>"></script>
