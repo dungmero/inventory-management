@@ -82,7 +82,7 @@ public class CategoryController {
 	@GetMapping("/category/edit/{id}")
 	public String edit(Model model, @PathVariable("id") int id) {
 		log.info("Edit category with id=" + id);
-		Category category = productService.findById(id);
+		Category category = productService.findByIdCategory(id);
 		if (category != null) {
 			model.addAttribute("titlePage", "Edit Category");
 			model.addAttribute("modelForm", category);
@@ -95,7 +95,7 @@ public class CategoryController {
 	@GetMapping("/category/view/{id}")
 	public String view(Model model, @PathVariable("id") int id) {
 		log.info("Edit category with id=" + id);
-		Category category = productService.findById(id);
+		Category category = productService.findByIdCategory(id);
 		if (category != null) {
 			model.addAttribute("titlePage", "view Category");
 			model.addAttribute("modelForm", category);
@@ -144,7 +144,7 @@ public class CategoryController {
 	@GetMapping("/category/delete/{id}")
 	public String delete(Model model, @PathVariable("id") int id, HttpSession session) {
 		log.info("Delete category with id=" + id);
-		Category category = productService.findById(id);
+		Category category = productService.findByIdCategory(id);
 		if (category != null) {
 			try {
 				productService.deleteCategory(category);
