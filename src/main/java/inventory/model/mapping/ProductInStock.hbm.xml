@@ -12,6 +12,9 @@
         <property name="qty" type="int">
             <column name="QTY" not-null="true"/>
         </property>
+        <property name="price" type="big_decimal">
+            <column name="PRICE" not-null="true" precision="15"/>
+        </property>
         <property name="activeFlag" type="int">
             <column name="ACTIVE_FLAG" not-null="true"/>
         </property>
