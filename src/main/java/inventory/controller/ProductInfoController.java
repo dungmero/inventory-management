@@ -1,5 +1,7 @@
 package inventory.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -22,11 +24,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import inventory.model.ProductInfo;
 import inventory.model.Category;
 import inventory.model.Paging;
 import inventory.service.ProductService;
+import inventory.util.ConfigLoader;
 import inventory.util.Constant;
 import inventory.validate.ProductInfoValidator;
 
@@ -37,68 +41,66 @@ public class ProductInfoController {
 	@Autowired
 	private ProductInfoValidator productInfoValidator;
 	static final Logger log = Logger.getLogger(ProductInfoController.class);
-
 	@InitBinder
 	private void initBinder(WebDataBinder binder) {
-		if (binder.getTarget() == null) {
+		if(binder.getTarget()==null) {
 			return;
 		}
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
-		if (binder.getTarget().getClass() == ProductInfo.class) {
+		if(binder.getTarget().getClass()== ProductInfo.class) {
 			binder.setValidator(productInfoValidator);
 		}
 	}
-
-	@RequestMapping(value = { "/product-info/list", "/product-info/list/" })
+	@RequestMapping(value= {"/product-info/list","/product-info/list/"})
+	
 	public String redirect() {
 		return "redirect:/product-info/list/1";
 	}
-
-	@RequestMapping(value = "/product-info/list/{page}")
-	public String showProductInfoList(Model model, HttpSession session,
-			@ModelAttribute("searchForm") ProductInfo productInfo, @PathVariable("page") int page) {
+	
+	@RequestMapping(value="/product-info/list/{page}")
+	public String showProductInfoList(Model model,HttpSession session , @ModelAttribute("searchForm") ProductInfo productInfo,@PathVariable("page") int page) {
 		Paging paging = new Paging(5);
 		paging.setIndexPage(page);
-		List<ProductInfo> categories = productService.getAllProductInfo(productInfo, paging);
-		if (session.getAttribute(Constant.MSG_SUCCESS) != null) {
+		List<ProductInfo> categories = productService.getAllProductInfo(productInfo,paging);
+		if(session.getAttribute(Constant.MSG_SUCCESS)!=null ) {
 			model.addAttribute(Constant.MSG_SUCCESS, session.getAttribute(Constant.MSG_SUCCESS));
 			session.removeAttribute(Constant.MSG_SUCCESS);
 		}
-		if (session.getAttribute(Constant.MSG_ERROR) != null) {
+		if(session.getAttribute(Constant.MSG_ERROR)!=null ) {
 			model.addAttribute(Constant.MSG_ERROR, session.getAttribute(Constant.MSG_ERROR));
 			session.removeAttribute(Constant.MSG_ERROR);
 		}
 		model.addAttribute("pageInfo", paging);
 		model.addAttribute("categories", categories);
 		return "productInfo-list";
-
+		
 	}
-
-	@GetMapping("/productInfo/add")
+	@GetMapping("/product-info/add")
 	public String add(Model model) {
 		model.addAttribute("titlePage", "Add ProductInfo");
 		model.addAttribute("modelForm", new ProductInfo());
 		List<Category> categories = productService.getAllCategory(null, null);
 		Map<String, String> mapCategory = new HashMap<>();
-		for (Category category : categories) {
+		for(Category category : categories) {
 			mapCategory.put(String.valueOf(category.getId()), category.getName());
 		}
+		model.addAttribute("mapCategory", mapCategory);
 		model.addAttribute("mapCategory", mapCategory);
 		model.addAttribute("viewOnly", false);
 		return "productInfo-action";
 	}
-
-	@GetMapping("/productInfo/edit/{id}")
-	public String edit(Model model, @PathVariable("id") int id) {
-		log.info("Edit productInfo with id=" + id);
+	@GetMapping("/product-info/edit/{id}")
+	public String edit(Model model , @PathVariable("id") int id) {
+		log.info("Edit productInfo with id="+id);
 		ProductInfo productInfo = productService.findByIdProductInfo(id);
-		if (productInfo != null) {
+		if(productInfo!=null) {
 			List<Category> categories = productService.getAllCategory(null, null);
 			Map<String, String> mapCategory = new HashMap<>();
-			for (Category category : categories) {
+			for(Category category : categories) {
 				mapCategory.put(String.valueOf(category.getId()), category.getName());
 			}
+			productInfo.setCateId(productInfo.getCategory().getId());
 			model.addAttribute("mapCategory", mapCategory);
 			model.addAttribute("titlePage", "Edit ProductInfo");
 			model.addAttribute("modelForm", productInfo);
@@ -107,41 +109,43 @@ public class ProductInfoController {
 		}
 		return "redirect:/product-info/list";
 	}
-
-	@GetMapping("/productInfo/view/{id}")
-	public String view(Model model, @PathVariable("id") int id) {
-		log.info("Edit productInfo with id=" + id);
+	@GetMapping("/product-info/view/{id}")
+	public String view(Model model , @PathVariable("id") int id) {
+		log.info("View productInfo with id="+id);
 		ProductInfo productInfo = productService.findByIdProductInfo(id);
-		if (productInfo != null) {
-			model.addAttribute("titlePage", "view ProductInfo");
+		if(productInfo!=null) {
+			model.addAttribute("titlePage", "View ProductInfo");
 			model.addAttribute("modelForm", productInfo);
 			model.addAttribute("viewOnly", true);
 			return "productInfo-action";
 		}
 		return "redirect:/product-info/list";
 	}
-
-	@PostMapping("/productInfo/save")
-	public String save(Model model, @ModelAttribute("modelForm") @Validated ProductInfo productInfo,
-			BindingResult result, HttpSession session) {
-		if (result.hasErrors()) {
-			if (productInfo.getId() != null) {
+	@PostMapping("/product-info/save")
+	public String save(Model model,@ModelAttribute("modelForm") @Validated ProductInfo productInfo,BindingResult result,HttpSession session) {
+		if(result.hasErrors()) {
+			if(productInfo.getId()!=null) {
 				model.addAttribute("titlePage", "Edit ProductInfo");
-			} else {
+			}else {
 				model.addAttribute("titlePage", "Add ProductInfo");
 			}
 			List<Category> categories = productService.getAllCategory(null, null);
 			Map<String, String> mapCategory = new HashMap<>();
-			for (Category category : categories) {
+			for(Category category : categories) {
 				mapCategory.put(String.valueOf(category.getId()), category.getName());
 			}
 			model.addAttribute("mapCategory", mapCategory);
 			model.addAttribute("modelForm", productInfo);
 			model.addAttribute("viewOnly", false);
 			return "productInfo-action";
+			
 		}
-		if (productInfo.getId() != null && productInfo.getId() != 0) {
+		Category category = new Category();
+		category.setId(productInfo.getCateId());
+		productInfo.setCategory(category);
+		if(productInfo.getId()!=null && productInfo.getId()!=0) {
 			try {
+				
 				productService.updateProductInfo(productInfo);
 				session.setAttribute(Constant.MSG_SUCCESS, "Update success!!!");
 			} catch (Exception e) {
@@ -150,24 +154,25 @@ public class ProductInfoController {
 				log.error(e.getMessage());
 				session.setAttribute(Constant.MSG_ERROR, "Update has error");
 			}
-		} else {
-			try {
-				productService.saveProductInfo(productInfo);
-				session.setAttribute(Constant.MSG_SUCCESS, "Insert success!!!");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				session.setAttribute(Constant.MSG_ERROR, "Insert has error!!!");
-			}
+			
+		}else {
+				try {
+					productService.saveProductInfo(productInfo);
+					session.setAttribute(Constant.MSG_SUCCESS, "Insert success!!!");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					session.setAttribute(Constant.MSG_ERROR, "Insert has error!!!");
+				}
 		}
 		return "redirect:/product-info/list";
+		
 	}
-
-	@GetMapping("/productInfo/delete/{id}")
-	public String delete(Model model, @PathVariable("id") int id, HttpSession session) {
-		log.info("Delete productInfo with id=" + id);
+	@GetMapping("/product-info/delete/{id}")
+	public String delete(Model model , @PathVariable("id") int id,HttpSession session) {
+		log.info("Delete productInfo with id="+id);
 		ProductInfo productInfo = productService.findByIdProductInfo(id);
-		if (productInfo != null) {
+		if(productInfo!=null) {
 			try {
 				productService.deleteProductInfo(productInfo);
 				session.setAttribute(Constant.MSG_SUCCESS, "Delete success!!!");
@@ -179,5 +184,5 @@ public class ProductInfoController {
 		}
 		return "redirect:/product-info/list";
 	}
-
+	
 }

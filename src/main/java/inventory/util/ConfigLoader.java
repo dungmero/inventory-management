@@ -8,8 +8,7 @@ public class ConfigLoader {
 	private Properties properties = null;
 	private static ConfigLoader instance = null;
 	String proFileName = "config.properties";
-	private ConfigLoader() {
-		
+	private ConfigLoader(){
 		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(proFileName);
 		if(inputStream!=null) {
 			properties = new Properties();
@@ -23,9 +22,10 @@ public class ConfigLoader {
 	}
 	public static ConfigLoader getInstance() {
 		if(instance==null) {
-			synchronized (ConfigLoader.class) {
+		//	synchronized (ConfigLoader.class) {
 				instance = new ConfigLoader();
-			}
+		//	}
+			
 		}
 		return instance;
 	}
@@ -35,5 +35,4 @@ public class ConfigLoader {
 		}
 		return null;
 	}
-	
 }

@@ -1,10 +1,11 @@
 package inventory.model;
-// Generated Jul 18, 2022, 11:57:22 PM by Hibernate Tools 5.6.7.Final
+// Generated Dec 26, 2018 6:59:18 PM by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -25,6 +26,7 @@ public class ProductInfo implements java.io.Serializable {
 	private Set productInStocks = new HashSet(0);
 	private Set invoices = new HashSet(0);
 	private MultipartFile multipartFile;
+	private Integer cateId;
 
 	public ProductInfo() {
 	}
@@ -38,6 +40,7 @@ public class ProductInfo implements java.io.Serializable {
 		this.activeFlag = activeFlag;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
+		
 	}
 
 	public ProductInfo(Category category, String code, String name, String description, String imgUrl, int activeFlag,
@@ -158,5 +161,14 @@ public class ProductInfo implements java.io.Serializable {
 	public void setMultipartFile(MultipartFile multipartFile) {
 		this.multipartFile = multipartFile;
 	}
+
+	public Integer getCateId() {
+		return cateId;
+	}
+
+	public void setCateId(Integer cateId) {
+		this.cateId = cateId;
+	}
+	
 
 }
