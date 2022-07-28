@@ -82,6 +82,11 @@
 											</div>
 										</div>
 										</c:if>
+										<c:if test="${viewOnly}">
+											<div class="item form-group content">
+												<img src="<c:url value="${modelForm.imgUrl }"/>"/>
+											</div>
+										</c:if>
 										<div class="ln_solid"></div>
 										<div class="item form-group">
 											<div class="col-md-6 col-sm-6 offset-md-3">
@@ -108,7 +113,7 @@ $(document).ready(function(){
 	$('#categorylistId').parents().show();
 });
 function cancel(){
-	window.location.href='<c:url value="/category/list"/>'
+	window.location.href='<c:url value="/product-info/list"/>'
 }
 
 
