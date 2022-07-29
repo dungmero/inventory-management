@@ -45,7 +45,7 @@ public class ProductInStockService {
 		return productInStockDAO.findAll(queryStr.toString(), mapParams, paging);
 	}
 
-	public void seveOrUpdate(Invoice invoice) throws Exception {
+	public void saveOrUpdate(Invoice invoice) throws Exception {
 		log.info("Product in stock");
 		if (invoice.getProductInfo() != null) {
 			String code = invoice.getProductInfo().getCode();
