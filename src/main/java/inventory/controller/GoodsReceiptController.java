@@ -89,7 +89,7 @@ public class GoodsReceiptController {
 		return "goods-receipt-action";
 	}
 
-
+ 
 	@GetMapping("/goods-receipt/edit/{id}")
 	public String edit(Model model, @PathVariable("id") int id) {
 		log.info("Edit invoice with id=" + id);
@@ -103,16 +103,16 @@ public class GoodsReceiptController {
 		}
 		return "redirect:/goods-receipt/list";
 	}
-
+ 
 	@GetMapping("/goods-receipt/view/{id}")
-	public String view(Model model, @PathVariable("id") int id) {
-		log.info("Edit invoice with id=" + id);
-		Invoice invoice = invoiceService.find("id", id).get(0);
-		if (invoice != null) {
-			model.addAttribute("titlePage", "view Invoice");
+	public String view(Model model , @PathVariable("id") int id) {
+		log.info("View invoice with id="+id);
+		Invoice invoice = invoiceService.find("id",id).get(0);
+		if(invoice!=null) {
+			model.addAttribute("titlePage", "View Invoice");
 			model.addAttribute("modelForm", invoice);
 			model.addAttribute("viewOnly", true);
-			return "goods-receipt-action";
+			return "invoice-action";
 		}
 		return "redirect:/goods-receipt/list";
 	}
@@ -130,6 +130,7 @@ public class GoodsReceiptController {
 				model.addAttribute("viewOnly", false);
 			return "goods-receipt-action";
 		}
+		invoice.setType(Constant.TYPE_GOODS_RECEIPT);
 		if(invoice.getId()!=null && invoice.getId()!=0) {
 			try {
 				invoiceService.update(invoice);

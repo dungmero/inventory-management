@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import inventory.model.Category;
 import inventory.model.Invoice;
 import inventory.service.InvoiceService;
 
@@ -39,22 +40,20 @@ public class InvoiceValidator implements Validator {
 				} else {
 					errors.rejectValue("code", "msg.code.exist");
 				}
-
 			}
 		}
-		if(invoice.getQty() <= 0) {
+		if (invoice.getQty() <= 0) {
 			errors.rejectValue("qty", "msg.wrong.format");
 		}
-		if(invoice.getPrice().compareTo(BigDecimal.ZERO) <= 0) {
+		if (invoice.getPrice().compareTo(BigDecimal.ZERO) <= 0) {
 			errors.rejectValue("price", "msg.wrong.format");
 		}
-		if(invoice.getFromDate() != null && invoice.getToDate() != null) {
-			if(invoice.getFromDate().after(invoice.getToDate())) {
+		if (invoice.getFromDate() != null && invoice.getToDate() != null) {
+			if (invoice.getFromDate().after(invoice.getToDate())) {
 				errors.rejectValue("fromDate", "msg.wrong.date");
 			}
 		}
-		
+
 	}
-	
-	
+
 }
