@@ -2,11 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 <style>
-	.price {
-		font-size: 18px;
-	}
+.price {
+	font-size: 18px;
+}
 </style>
 <div class="right_col" role="main">
 	<div class="">
@@ -23,11 +24,13 @@
 				<div class="x_content">
 					<a href="<c:url value="/goods-receipt/add"/>" class="btn btn-app"><i
 						class="fa fa-plus"></i>Add</a>
-					<div class="container" style="padding:50px;">
+					<a href="<c:url value="/goods-receipt/export"/>" class="btn btn-app"><i
+						class="fa fa-cloud-download"></i>Export</a>
+					<div class="container" style="padding: 50px;">
 						<form:form modelAttribute="searchForm"
 							cssClass="form-horizontal form-label-left"
 							servletRelativeAction="/goods-receipt/list/1" method="POST">
-							
+
 							<div class="item form-group">
 								<label class="col-form-label col-md-3 col-sm-3 label-align"
 									for="code">Code </label>
@@ -41,24 +44,26 @@
 								<div class="col-md-6 col-sm-6 ">
 									<div class="input-group date" id="fromDatePicker">
 										<form:input path="fromDate" cssClass="form-control " />
-										<div class="input-group-addon input-group-append"><i class="fa fa-calendar"></i></span>
+										<div class="input-group-addon input-group-append">
+											<i class="fa fa-calendar"></i></span>
 										</div>
 									</div>
-									
+
 								</div>
 							</div>
-							
+
 							<div class="item form-group">
 								<label class="col-form-label col-md-3 col-sm-3 label-align"
 									for="toDate">To Date</label>
 								<div class="col-md-6 col-sm-6 ">
 									<div class="input-group date" id="toDatePicker">
 										<form:input path="toDate" cssClass="form-control " />
-										<span class="add-on input-group-addon"><i class="fa fa-calendar"></i></span>
+										<span class="add-on input-group-addon"><i
+											class="fa fa-calendar"></i></span>
 									</div>
 								</div>
 							</div>
-							
+
 
 							<div class="item form-group">
 								<div class="col-md-6 col-sm-6 offset-md-3">
@@ -67,7 +72,7 @@
 							</div>
 						</form:form>
 					</div>
-					
+
 					<div class="table-responsive">
 						<table class="table table-striped jambo_table bulk_action">
 							<thead>
@@ -132,23 +137,18 @@
 	 $(document).ready(function(){
 		 processMessage();
 		 $('#fromDatePicker').datetimepicker({
-			 format : 'YYYY-MM-DD HH:mm:ss',
-			 icons: {
-	                time: 'fa fa-clock-o',
-	                date: 'fa fa-calendar'
-	            }
+             format: "YYYY-MM-DD HH:mm:ss",
+			 icons: { date: 'fa fa-calendar' }
 			 
 		 });
 		 $('#toDatePicker').datetimepicker({
 			 format : 'YYYY-MM-DD HH:mm:ss',
-			 icons: {
-	                time: 'fa fa-clock-o',
-	                date: 'fa fa-calendar'
-	            }
+			 icons: { date: 'fa fa-calendar' }
 		 })	
 		 $('.price').each(function(){
 			 $(this).text(numeral($(this).text()).format('0,0'));
 		 })
+		 
 		 
 	 });
 	 function processMessage(){
