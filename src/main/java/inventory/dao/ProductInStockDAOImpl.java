@@ -9,4 +9,4 @@ import inventory.model.ProductInStock;
 @Transactional(rollbackFor=Exception.class)
 public class ProductInStockDAOImpl extends BaseDAOImpl<ProductInStock> implements ProductInStockDAO<ProductInStock>{
 
-}
+} 

@@ -24,7 +24,7 @@ public class HistoryController {
 	private HistoryService historyService;
 	
 	static Logger log = Logger.getLogger(HistoryController.class);
-	
+	 
 	@GetMapping({"/history/list","/history/list/"})
 	public String redirect() {
 		return "redirect:/history/list/1";

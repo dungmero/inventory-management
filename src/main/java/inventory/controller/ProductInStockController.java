@@ -24,7 +24,7 @@ public class ProductInStockController {
 	@GetMapping({"/product-in-stock/list","/product-in-stock/list/"})
 	public String redirect() {
 		return "redirect:/product-in-stock/list/1";
-	}
+	} 
 	@RequestMapping(value="/product-in-stock/list/{page}")
 	public String list(Model model, @ModelAttribute("searchForm") ProductInStock productInStock,@PathVariable("page") int page) {
 		Paging paging = new Paging(5);

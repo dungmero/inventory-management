@@ -18,7 +18,7 @@ import inventory.util.Constant;
 
 @Service
 public class InvoiceService {
-	@Autowired
+	@Autowired 
 	private HistoryService historyService;
 	@Autowired
 	private ProductInStockService productInStockService;

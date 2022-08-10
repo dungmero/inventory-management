@@ -11,7 +11,7 @@ import inventory.model.Users;
 
 @Service
 public class UserService {
-	final static Logger log = Logger.getLogger(UserService.class);
+	final static Logger log = Logger.getLogger(UserService.class); 
 	@Autowired
 	private UserDAO<Users> userDAO;
 	public List<Users> findByProperty(String property, Object value) {

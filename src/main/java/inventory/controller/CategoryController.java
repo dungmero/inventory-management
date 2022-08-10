@@ -35,7 +35,7 @@ public class CategoryController {
 	private CategoryValidator categoryValidator;
 	static final Logger log = Logger.getLogger(CategoryController.class);
 
-	@InitBinder
+	@InitBinder 
 	private void initBinder(WebDataBinder binder) {
 		if (binder.getTarget() == null) {
 			return;

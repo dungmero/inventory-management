@@ -20,7 +20,7 @@ public class CategoryValidator implements Validator{
 		return clazz == Category.class;
 	}
 
-	@Override
+	@Override 
 	public void validate(Object target, Errors errors) {
 		Category category = (Category) target;
 		ValidationUtils.rejectIfEmpty(errors, "code", "msg.required");

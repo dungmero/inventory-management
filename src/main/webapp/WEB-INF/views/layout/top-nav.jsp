@@ -17,7 +17,7 @@
                         <a class="dropdown-item"  href="javascript:;">
                           <span class="badge bg-red pull-right">50%</span>
                           <span>Settings</span>
-                        </a>
+                        </a> 
                     <a class="dropdown-item"  href="javascript:;">Help</a>
                       <a class="dropdown-item"  href="<c:url value="/logout"/>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                     </div>

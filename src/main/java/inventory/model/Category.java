@@ -18,7 +18,7 @@ public class Category implements java.io.Serializable {
 	private Date createDate;
 	private Date updateDate;
 	private Set productInfos = new HashSet(0);
-
+ 
 	public Category() {
 	}
 

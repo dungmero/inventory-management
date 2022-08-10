@@ -17,7 +17,7 @@ import inventory.service.InvoiceService;
 public class InvoiceValidator implements Validator {
 	@Autowired
 	private InvoiceService invoiceService;
-
+ 
 	@Override
 	public boolean supports(Class<?> clazz) {
 		// TODO Auto-generated method stub

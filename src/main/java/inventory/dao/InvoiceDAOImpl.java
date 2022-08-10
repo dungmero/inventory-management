@@ -10,3 +10,4 @@ import inventory.model.Invoice;
 public class InvoiceDAOImpl extends BaseDAOImpl<Invoice> implements InvoiceDAO<Invoice> {
 
 }
+ 

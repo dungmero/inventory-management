@@ -9,3 +9,4 @@ import inventory.model.ProductInfo;
 public class ProductInfoDAOImpl extends BaseDAOImpl<ProductInfo> implements ProductInfoDAO<ProductInfo> {
 
 }
+ 

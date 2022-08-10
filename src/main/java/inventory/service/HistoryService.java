@@ -16,7 +16,7 @@ import inventory.model.Invoice;
 import inventory.model.Paging;
 
 @Service
-public class HistoryService {
+public class HistoryService { 
 	@Autowired
 	private HistoryDAO<History> historyDAO;
 	private static final Logger log = Logger.getLogger(HistoryService.class);

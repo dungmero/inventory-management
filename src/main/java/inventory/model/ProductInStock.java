@@ -11,7 +11,7 @@ public class ProductInStock implements java.io.Serializable {
 
 	private Integer id;
 	private ProductInfo productInfo;
-	private int qty;
+	private int qty; 
 	private BigDecimal price;
 	private int activeFlag;
 	private Date createDate;

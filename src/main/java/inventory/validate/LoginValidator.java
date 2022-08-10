@@ -20,7 +20,7 @@ public class LoginValidator implements Validator {
 		// TODO Auto-generated method stub
 		return clazz == Users.class;
 	}
-
+ 
 	@Override
 	public void validate(Object target, Errors errors) {
 		Users user = (Users) target;

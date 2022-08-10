@@ -14,7 +14,7 @@ public class Paging {
 	public long getTotalRows() {
 		return totalRows;
 	}
-
+ 
 	public void setTotalRows(long totalRows) {
 		this.totalRows = totalRows;
 	}

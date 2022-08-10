@@ -16,7 +16,7 @@ public class UserRole implements java.io.Serializable {
 	private Date updateDate;
 
 	public UserRole() {
-	}
+	} 
 
 	public UserRole(Role role, Users users, int activeFlag, Date createDate, Date updateDate) {
 		this.role = role;

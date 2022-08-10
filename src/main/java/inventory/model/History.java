@@ -21,7 +21,7 @@ public class History implements java.io.Serializable {
 
 	public History() {
 	}
-
+ 
 	public History(ProductInfo productInfo, String actionName, int type, int qty, BigDecimal price, int activeFlag,
 			Date createDate, Date updateDate) {
 		this.productInfo = productInfo;

@@ -45,7 +45,7 @@ public class ProductInfoController {
 	private void initBinder(WebDataBinder binder) {
 		if(binder.getTarget()==null) {
 			return;
-		}
+		} 
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
 		if(binder.getTarget().getClass()== ProductInfo.class) {

@@ -14,7 +14,7 @@ public class ConfigLoader {
 			properties = new Properties();
 			try {
 				properties.load(inputStream);
-			} catch (IOException e) {
+			} catch (IOException e) { 
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

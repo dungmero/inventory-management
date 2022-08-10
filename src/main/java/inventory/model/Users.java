@@ -19,7 +19,7 @@ public class Users implements java.io.Serializable {
 	private Date createDate;
 	private Date updateDate;
 	private Set userRoles = new HashSet(0);
-
+ 
 	public Users() {
 	}
 

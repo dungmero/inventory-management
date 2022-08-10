@@ -21,7 +21,7 @@ public class Invoice implements java.io.Serializable {
 	private Date fromDate;
 	private Date toDate;
 	private Integer productId;
-
+ 
 	public Invoice() {
 	}
 

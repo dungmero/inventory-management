@@ -9,3 +9,4 @@ import inventory.model.Category;
 public class CategoryDAOImpl extends BaseDAOImpl<Category> implements CategoryDAO<Category> {
 
 }
+ 

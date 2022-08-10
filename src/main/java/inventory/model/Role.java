@@ -19,7 +19,7 @@ public class Role implements java.io.Serializable {
 	private Set auths = new HashSet(0);
 	private Set userRoles = new HashSet(0);
 
-	public Role() {
+	public Role() { 
 	}
 
 	public Role(String roleName, String description, int activeFlag, Date createDate, Date updateDate) {

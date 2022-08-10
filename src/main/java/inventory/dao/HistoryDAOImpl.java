@@ -10,3 +10,4 @@ import inventory.model.History;
 public class HistoryDAOImpl extends BaseDAOImpl<History> implements HistoryDAO<History>{
 
 }
+ 

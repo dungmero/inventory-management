@@ -20,7 +20,7 @@ import inventory.model.Paging;
 import inventory.model.ProductInfo;
 import inventory.util.ConfigLoader;
 
-@Service
+@Service 
 public class ProductService {
 	@Autowired
 	private CategoryDAO<Category> categoryDAO;

@@ -8,7 +8,7 @@
 				<li class="active page-item"><a class="page-link"
 					href="javascript:void(0);">${loop.index}</a></li>
 			</c:when>
-			<c:otherwise>
+			<c:otherwise> 
 				<li class="page-item"><a class="page-link"
 					href="javascript:void(0);" onclick="gotoPage(${loop.index});">${loop.index}</a></li>
 			</c:otherwise>

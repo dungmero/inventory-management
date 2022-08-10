@@ -22,7 +22,7 @@ public class Menu implements java.io.Serializable {
 	private Set auths = new HashSet(0);
 	private List<Menu> child;
 	private String idMenu;
-
+ 
 	public Menu() {
 	}
 

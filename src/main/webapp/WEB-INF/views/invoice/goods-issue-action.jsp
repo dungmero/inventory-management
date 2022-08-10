@@ -13,12 +13,12 @@
 		<div class="row">
 			<div class="col-md-12 col-sm-12 ">
 				<div class="x_panel">
- 
+
 					<div class="x_content">
 						<br />
 						<form:form modelAttribute="modelForm"
 							cssClass="form-horizontal form-label-left"
-							servletRelativeAction="/goods-receipt/save" method="POST">
+							servletRelativeAction="/goods-issue/save" method="POST">
 							<form:hidden path="id" />
 							<form:hidden path="createDate" />
 							<form:hidden path="activeFlag" />
@@ -104,13 +104,13 @@
 <script type="text/javascript">
 	$(document).ready(
 			function() {
-				$('#goods-receiptlistId').addClass('current-page').siblings()
+				$('#goods-issuelistId').addClass('current-page').siblings()
 						.removeClass('current-page');
-				var parent = $('#goods-receiptlistId').parents('li');
+				var parent = $('#goods-issuelistId').parents('li');
 				parent.addClass('active').siblings().removeClass('active');
-				$('#goods-receiptlistId').parents().show();
+				$('#goods-issuelistId').parents().show();
 			});
 	function cancel() {
-		window.location.href = '<c:url value="/goods-receipt/list"/>'
+		window.location.href = '<c:url value="/goods-issue/list"/>'
 	}
 </script>

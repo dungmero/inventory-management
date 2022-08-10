@@ -39,7 +39,7 @@ public class LoginController {
 		if(binder.getTarget().getClass() == Users.class) {
 			binder.setValidator(loginValidator);
 		}
-	}
+	} 
 	@GetMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("loginForm", new Users());

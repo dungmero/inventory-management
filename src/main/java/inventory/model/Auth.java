@@ -15,7 +15,7 @@ public class Auth implements java.io.Serializable {
 	private int activeFlag;
 	private Date createDate;
 	private Date updateDate;
-
+ 
 	public Auth() {
 	}
 
