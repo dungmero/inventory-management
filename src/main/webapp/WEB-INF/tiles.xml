@@ -40,19 +40,31 @@
 			value="/WEB-INF/views/product-in-stock/product-in-stock.jsp"></put-attribute>
 	</definition>
 	<definition name="history" extends="master">
-		<put-attribute name="body" value="/WEB-INF/views/history/history.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/history/history.jsp"></put-attribute>
 	</definition>
 	<definition name="goods-receipt-action" extends="master">
-		<put-attribute name="body" value="/WEB-INF/views/invoice/goods-receipt-action.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/invoice/goods-receipt-action.jsp"></put-attribute>
 	</definition>
 	<definition name="goods-receipt-list" extends="master">
-		<put-attribute name="body" value="/WEB-INF/views/invoice/goods-receipt-list.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/invoice/goods-receipt-list.jsp"></put-attribute>
 	</definition>
-		<definition name="goods-issue-action" extends="master">
-		<put-attribute name="body" value="/WEB-INF/views/invoice/goods-issue-action.jsp"></put-attribute>
+	<definition name="goods-issue-action" extends="master">
+		<put-attribute name="body"
+			value="/WEB-INF/views/invoice/goods-issue-action.jsp"></put-attribute>
 	</definition>
 	<definition name="goods-issue-list" extends="master">
-		<put-attribute name="body" value="/WEB-INF/views/invoice/goods-issue-list.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/invoice/goods-issue-list.jsp"></put-attribute>
 	</definition>
-	
+	<definition name="user-action" extends="master">
+		<put-attribute name="body"
+			value="/WEB-INF/views/users/user-action.jsp"></put-attribute>
+	</definition>
+	<definition name="user-list" extends="master">
+		<put-attribute name="body"
+			value="/WEB-INF/views/users/user-list.jsp"></put-attribute>
+	</definition>
 </tiles-definitions>
