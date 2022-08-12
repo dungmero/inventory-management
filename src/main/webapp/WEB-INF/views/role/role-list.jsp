@@ -9,7 +9,7 @@
 		<div class="col-md-12 col-sm-12  ">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Product Info List</h2>
+					<h2>Role List</h2>
 
 					<div class="clearfix"></div>
 				</div>
@@ -17,7 +17,13 @@
 				<div class="x_content">
 					<a href="<c:url value="/role/add"/>" class="btn btn-app"><i
 						class="fa fa-plus"></i>Add</a>
-						
+					<div class="container" style="padding:50px;">
+						<form:form modelAttribute="searchForm"
+							cssClass="form-horizontal form-label-left"
+							servletRelativeAction="/role/list/1" method="POST">
+
+						</form:form>
+					</div>
 					<div class="table-responsive">
 						<table class="table table-striped jambo_table bulk_action">
 							<thead>
