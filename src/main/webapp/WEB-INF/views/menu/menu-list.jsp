@@ -49,7 +49,7 @@
 									</c:choose>
 									<td class=" ">${pageInfo.getOffset()+loop.index+1}</td>
 									<td class=" ">${menu.url}</td>
-									<c:choose>
+									<c:choose> 
 										<c:when test="${menu.activeFlag == 1 }">
 											<td>Enable</td>
 										</c:when>
