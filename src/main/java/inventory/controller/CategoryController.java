@@ -53,7 +53,7 @@ public class CategoryController {
 
 	@RequestMapping(value="/category/list/{page}")
 	public String showCategoryList(Model model,HttpSession session , @ModelAttribute("searchForm") Category category,@PathVariable("page") int page) {
-		Paging paging = new Paging(1);
+		Paging paging = new Paging(5);
 		paging.setIndexPage(page);
 		List<Category> categories = productService.getAllCategory(category,paging);
 		if(session.getAttribute(Constant.MSG_SUCCESS)!=null ) {

@@ -2,6 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<style>
+.price {
+	font-size: 18px;
+}
+</style>
 <div class="right_col" role="main">
 	<div class="">
 		<div class="clearfix"></div>
@@ -90,7 +97,7 @@
 									<td class=" ">${history.productInfo.code}</td>
 									<td class=" ">${history.productInfo.name}</td>
 									<td class=" ">${history.qty}</td>
-									<td class=" ">${history.price}</td>
+									<td class="price">${history.price}</td>
 									<c:choose>
 										<c:when test="${history.type==1 }">
 											<td>Goods Receipt</td>
@@ -118,6 +125,9 @@
 	 }
 	 $(document).ready(function(){
 		 processMessage();
+		 $('.price').each(function(){
+			 $(this).text(numeral($(this).text()).format('0,0'));
+		 })
 	 });
 	 function processMessage(){
 		 var msgSuccess = '${msgSuccess}';
